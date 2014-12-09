@@ -72,7 +72,7 @@ var NpmModuleGenerator = yeoman.generators.Base.extend({
     this.copy('index.js', 'index.js');
     this.copy('license', 'license');
     this.copy('readme.md', 'readme.md');
-    this.copy('test.js', 'test.js');
+    this.directory('test', 'test');
   }
 });
 
