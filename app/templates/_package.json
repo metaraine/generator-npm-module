@@ -22,8 +22,8 @@
   <%if(props.keywords.length) {
     %>"keywords": <%=props.prettyKeywords%>,
   <%}%>"devDependencies": {
-    "mocha": "*",
-    "insist": "*",
-    "browserify": "^7"
+    "mocha": "^2.0.1",
+    "insist": "^0.2.3",
+    "browserify": "^7.0.0"
   }
 }
