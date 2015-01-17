@@ -1,4 +1,4 @@
-assert = require 'insist'
+assert = require('chai').assert
 <%=camelize(props.project)%> = require '../index.js'
 
 describe 'something', ->
