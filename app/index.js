@@ -33,15 +33,24 @@ var NpmModuleGenerator = yeoman.generators.Base.extend({
       name: 'project',
       message: 'project name',
       default: path.basename(this.env.cwd)
-    },{
+    },
+    {
       type: 'text',
       name: 'description',
       message: 'project description'
-    },{
+    },
+    {
       type: 'text',
       name: 'keywords',
       message: 'keywords (comma-separated)'
-    }];
+    },
+    {
+      type: 'confirm',
+      name: 'cli',
+      message: 'Is this a command line application?',
+      default: false
+    }
+    ];
 
     this.prompt(prompts, function (props) {
       // convert the keywords string into an array
@@ -69,10 +78,15 @@ var NpmModuleGenerator = yeoman.generators.Base.extend({
     this.copy('_jshintrc', '.jshintrc');
     this.copy('_travis.yml', '.travis.yml');
     this.copy('_package.json', 'package.json');
-    this.copy('index.js', 'index.js');
-    this.copy('license', 'license');
-    this.copy('readme.md', 'readme.md');
-    this.directory('test', 'test');
+    this.copy('Gulpfile.coffee');
+    this.copy('LICENSE');
+    this.copy('README.md');
+    this.directory('src');
+    this.directory('test');
+
+    if(this.props.cli) {
+      this.copy('bin.js')
+    }
   }
 });
 

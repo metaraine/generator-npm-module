@@ -16,15 +16,22 @@
     "test": "mocha --compilers coffee:coffee-script/register",
     "browser": "browserify -s $npm_package_name -o browser.js ."
   },
-  "main": [
-    "lib/index.js"
-  ],
-  <%if(props.keywords.length) {
+  <%if(props.cli) {
+    %>"bin": {
+    "<%=props.project%>": "bin.js"
+  },
+  "preferGlobal": true,
+  <%}%><%if(props.keywords.length) {
     %>"keywords": <%=props.prettyKeywords%>,
   <%}%>"devDependencies": {
     "browserify": "^8.1.1",
     "coffee-script": "^1.8.0",
-    "gulp": "^3.8.10",
+    "gulp": "^3.8.10",<%
+    if(props.cli) { %>
+    "commander": "~2.8.1",
+    "get-stdin-promise": "~0.1.1",<%
+    }
+    %>
     "gulp-coffee": "^2.2.0",
     "gulp-jshint": "^1.9.0",
     "gulp-rimraf": "^0.1.1",
