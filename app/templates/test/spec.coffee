@@ -3,4 +3,5 @@ assert = require('chai').assert
 
 describe 'something', ->
 	it 'should do something', ->
-		assert true, false
+		assert.equal true, false
+    assert.deepEqual {}, {}
