@@ -4,6 +4,7 @@ coffee =       require('gulp-coffee')
 runSequence =  require('run-sequence')
 jshint =       require('gulp-jshint')
 clean =        require('gulp-rimraf')
+plumber =      require('gulp-plumber')
 ###
 rename =       require('gulp-rename')
 uglify =       require('gulp-uglify')
@@ -19,6 +20,7 @@ config =
 
 gulp.task 'scripts', ->
   gulp.src(config.scriptsSrc)
+    .pipe(plumber())
     .pipe(coffee().on('error', gutil.log))
     .pipe(gulp.dest(config.scriptsDest))
 
