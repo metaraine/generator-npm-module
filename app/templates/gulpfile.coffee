@@ -3,8 +3,8 @@ gutil =        require('gulp-util')
 coffee =       require('gulp-coffee')
 runSequence =  require('run-sequence')
 jshint =       require('gulp-jshint')
-clean =        require('gulp-rimraf')
 plumber =      require('gulp-plumber')
+del =          require('del')
 ###
 rename =       require('gulp-rename')
 uglify =       require('gulp-uglify')
@@ -24,9 +24,8 @@ gulp.task 'scripts', ->
     .pipe(coffee().on('error', gutil.log))
     .pipe(gulp.dest(config.scriptsDest))
 
-gulp.task 'clean', ->
-  gulp.src(['./lib'], read: false)
-  .pipe clean()
+gulp.task 'clean', (cb)->
+  del(['./lib'], cb)
 
 gulp.task 'default', (callback)->
 
